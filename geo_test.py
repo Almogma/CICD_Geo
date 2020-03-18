@@ -43,7 +43,7 @@ class MyTestCase(unittest.TestCase):
         stub = '8.8.8.8'
 
         # expected
-        expected = ('US', 'Newark', 'Google LLC', '8.8.8.8')
+        expected = ('US')
 
         # action
         result = Geo.ip_details(stub)
