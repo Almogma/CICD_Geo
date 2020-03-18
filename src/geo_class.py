@@ -26,6 +26,7 @@ class Geo:
             return (api_response['countryCode'],
                     api_response['city'],
                     api_response['isp'], api_response['query'])
+        gfdgfd3243
         if api_response['message'] == 'invalid query':
             return None
         return api_response['message']
