@@ -195,5 +195,31 @@ class MyTestCase(unittest.TestCase):
 
         # assert
         self.assertEqual(result, expected)
+
+    @patch('src.geo_class.requests.get')
+    def test_empty_dns(self, mock_get):
+        '''
+           Tests the case when the dns is empty valid.
+           :param mock_get: The mock of the IP-API json functionality of this method
+           :return:
+        '''
+        dns_information = {'dns': {'geo': 'Israel - BEZEQ-INTERNATIONAL',
+                                   'ip': '192.114.75.67'}}
+        # Configure the mock to return a response with an OK status code. Also, the mock should have
+        # a `json()` method that returns.
+        mock_get.return_value = Mock(ok=True)
+        mock_get.return_value.json.return_value = dns_information
+
+        # assume
+        stub = ''
+
+        # expected
+        expected = ('Israel - BEZEQ-INTERNATIONAL', '192.114.75.67')
+
+        # action
+        result = Geo.dns_details(stub)
+
+        # assert
+        self.assertEqual(result, expected)
 if __name__ == '__main__':
     unittest.main()
