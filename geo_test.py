@@ -238,5 +238,22 @@ class MyTestCase(unittest.TestCase):
 
         # assert
         self.assertEqual(result, expected)
+
+    def test_invalid_type(self):
+        '''
+           Tests the case when the input is not valid.
+           :return:
+        '''
+        # assume
+        stub = 123  # not string
+
+        # expected
+        expected = 'invalid input'
+
+        # action
+        result = Geo.dns_details(stub)
+
+        # assert
+        self.assertEqual(result, expected)
 if __name__ == '__main__':
     unittest.main()
