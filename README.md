@@ -15,11 +15,11 @@ The files we need to install are -
 * To install pylint you have to write that line on your terminal - pip install pylint.
 ```
 ### How to install the project - 
-1. Clone this repository to your computer by using the command "git clone : https://github.com/Almogma/CICD_Geo.git " 
+1. Clone this repository to your computer by using the command "git clone : https://github.com/Almogma/CICD_Geo.git" 
 2. Open the project in your preferred workspace
 3. Run Main
 
-Choose feature numb 1 -
+Choose feature number 1 -
 
 ### Feature num 1 - IP Geolocation - JSON endpoint 
 
