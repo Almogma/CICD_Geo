@@ -87,6 +87,6 @@ class Geo:
 
 # liaztxxwbzl113lsjlx4g4mnbnhhq9mc
 
-# 123456781234567812345678123456781
+# 12345678123456781234567812345678
 
 #print(Geo.dns_details('liaztxxwbzl113lsjlx4g4mnbnhhq9mc'))
