@@ -1,7 +1,7 @@
 '''
 Authors: Almog Mahluf - 205490170
          Alon Gabay   - 2080646080
-         Michael Elisha -
+         Michael Elisha - 316904978
 '''
 
 import requests
@@ -77,10 +77,9 @@ class Geo:
             api_response = api_result.json()
         except requests.exceptions.InvalidURL:
             return 'Invalid URL'
-        #return api_response
         return (api_response['dns']['geo'], api_response['dns']['ip'])
 
-# print(Geo.ip_details('8.8.8'))
+#print(Geo.ip_details('8.8.8.8'))
 
 # print(Geo.ip_isp_name('8.8.8'))
 
@@ -90,4 +89,4 @@ class Geo:
 
 # 123456781234567812345678123456781
 
-print(Geo.dns_details('1!@#$@#$!1234abcbcd1234abcd'))
+#print(Geo.dns_details('liaztxxwbzl113lsjlx4g4mnbnhhq9mc'))
