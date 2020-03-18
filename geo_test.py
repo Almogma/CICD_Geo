@@ -221,5 +221,22 @@ class MyTestCase(unittest.TestCase):
 
         # assert
         self.assertEqual(result, expected)
+
+    def test_too_long_dns(self):
+        '''
+           Tests the case when the dns is over 32 letters.
+           :return:
+           '''
+        # assume
+        stub = '123456781234567812345678123456781'  # 33 letters
+
+        # expected
+        expected = 'too long name server'
+
+        # action
+        result = Geo.dns_details(stub)
+
+        # assert
+        self.assertEqual(result, expected)
 if __name__ == '__main__':
     unittest.main()
