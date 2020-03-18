@@ -143,5 +143,32 @@ class MyTestCase(unittest.TestCase):
         # assert
         self.assertEqual(result, expected)
 
+    @patch('src.geo_class.requests.get')
+    def test_invalid_status_isp(self, mock_get):
+        '''
+           Tests the case when the ip invalid
+           :param mock_get: The mock of the IP-API json functionality of this method
+           :return:
+        '''
+        ip_information = {'status': 'fail',
+                          'message': 'invalid query',
+                          'query': 'XYZ'}
+        # Configure the mock to return a response with an OK status code. Also, the mock should have
+        # a `json()` method that returns.
+        mock_get.return_value = Mock(ok=True)
+        mock_get.return_value.json.return_value = ip_information
+
+        # assume
+        stub = 'XYZ'
+
+        # expected
+        expected = 'fail'
+
+        # action
+        result = Geo.ip_isp_name(stub)
+
+        # assert
+        self.assertEqual(result, expected)
+
 if __name__ == '__main__':
     unittest.main()
