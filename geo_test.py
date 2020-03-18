@@ -272,5 +272,6 @@ class MyTestCase(unittest.TestCase):
 
         # assert
         self.assertEqual(result, expected)
+
 if __name__ == '__main__':
     unittest.main()
