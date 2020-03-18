@@ -98,5 +98,7 @@ response :
 ## Authors
 
 **[Almog Mahluf](https://github.com/Almogma)** 
+
 **[Alon Gabay](https://github.com/AlonGabbay)** 
+
 * **Almog Mahluf** - *Initial work* - [PurpleBooth]
