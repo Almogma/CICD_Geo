@@ -1,87 +1,104 @@
 # CICD_Geo
 
-One Paragraph of project description goes here
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This project is for developers who want to write applications that can query IP-API,
+We shows the data in format via a simple URL-based interface over HTTP, which enables us to use our data directly from a user's browser or from your server.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The files we need to install are -
+* Python interpreter (version 3.7)
+* requests
+* pylint
 
 ```
-Give examples
+* To install requests you have to write that line on your terminal - pipenv install requests.
+* To install pylint you have to write that line on your terminal - pip install pylint.
 ```
+### How to install the project - 
+1. Clone this repository to your computer by using the command "git clone : https://github.com/Almogma/CICD_Geo.git" 
+2. Open the project in your preferred workspace
+3. Run Main
 
-### Installing
+Choose feature number 1 -
 
-A step by step series of examples that tell you how to get a development env running
+### Feature num 1 - IP Geolocation - JSON endpoint 
 
-Say what the step will be
-
+To search with query IP-API you have to write by this format : 
 ```
-Give the example
+The API base path is
+http://ip-api.com/json/{query}
 ```
+{query} can be a single IPv4/IPv6 address or a domain name. If you don't supply a query the current IP address will be used.
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
 
 ```
-Give an example
+Example - 
+Query : 24.48.0.1
+response : 
+{
+  "query": "24.48.0.1",
+  "status": "success",
+  "country": "Canada",
+  "countryCode": "CA",
+  "region": "QC",
+  "regionName": "Quebec",
+  "city": "Montreal",
+  "zip": "H1S",
+  "lat": 45.5808,
+  "lon": -73.5825,
+  "timezone": "America/Toronto",
+  "isp": "Le Groupe Videotron Ltee",
+  "org": "Videotron Ltee",
+  "as": "AS5769 Videotron Telecom Ltee"
+}
 ```
 
-### And coding style tests
+Choose feature number 2 -
 
-Explain what these tests test and why
+### Feature num 2 - Client Subnet and DNS server API -  
+
+Call the API by sending HTTP GET requests to
+```
+http://[32 random alphanumeric characters].edns.ip-api.com/json
+```
+[32 random alphanumeric characters] - you cant pass the limit of 32 characters.
+
+you can run automatic redirection by this HTTP requests 
 
 ```
-Give an example
+http://edns.ip-api.com/json
 ```
 
-## Deployment
+```
+Example - 
+HTTP GET requests - http://edns.ip-api.com/json
 
-Add additional notes about how to deploy this on a live system
+response : 
+{
+    "dns": {
+        "ip": "74.125.73.83",
+        "geo": "United States - Google"
+    },
+    "edns": {
+        "ip": "91.198.174.0",
+        "geo": "Netherlands - Wikimedia Foundation"
+    }
+}
+```
 
-## Built With
+* dns contains the IP address and Geolocation (country, ISP) of the DNS server the client used.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* edns contains the IP address and Geolocation (country, ISP) of the client. If the DNS server did not send the client subnet, the edns field will be be absent.
 
-## Contributing
+## information source
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* https://ip-api.com/docs/dns
+* https://ip-api.com/docs/api:json
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+**[Almog Mahluf](https://github.com/Almogma)** 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+**[Alon Gabay](https://github.com/AlonGabbay)** 
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Almog Mahluf** - *Initial work* - [PurpleBooth]
