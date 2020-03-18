@@ -255,5 +255,22 @@ class MyTestCase(unittest.TestCase):
 
         # assert
         self.assertEqual(result, expected)
+
+    def test_invalid_dns_url_range(self):
+        '''
+           Tests the case when the url is not valid.
+           :return:
+        '''
+        # assume
+        stub = '1!@#$@#$!1234abcbcd1234abcd'  # in range
+
+        # expected
+        expected = 'Invalid URL'
+
+        # action
+        result = Geo.dns_details(stub)
+
+        # assert
+        self.assertEqual(result, expected)
 if __name__ == '__main__':
     unittest.main()
