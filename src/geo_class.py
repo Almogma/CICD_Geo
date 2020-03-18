@@ -29,7 +29,6 @@ class Geo:
 
         if api_response['message'] == 'invalid query':
             return None
-        else:
         return api_response['message']
 
     @staticmethod
