@@ -78,5 +78,32 @@ class MyTestCase(unittest.TestCase):
         # assert
         self.assertEqual(result, expected)
         
+    @patch('src.geo_class.requests.get')
+    def test_valid_ip_not_valid_range(self, mock_get):
+        '''
+           Tests the case when the ip is valid and it is not in the range of valids.
+           :param mock_get: The mock of the IP-API json functionality of this method
+           :return:
+        '''
+        ip_information = {'status': 'fail',
+                          'message': 'private range',
+                          'query': '192.168.56.1'}
+        # Configure the mock to return a response with an OK status code. Also, the mock should have
+        # a `json()` method that returns.
+        mock_get.return_value = Mock(ok=True)
+        mock_get.return_value.json.return_value = ip_information
+
+        # assume
+        stub = '192.168.56.1'
+
+        # expected
+        expected = 'private range'
+
+        # action
+        result = Geo.ip_details(stub)
+
+        # assert
+        self.assertEqual(result, expected)
+
 if __name__ == '__main__':
     unittest.main()
