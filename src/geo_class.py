@@ -3,6 +3,7 @@ Authors: Almog Mahluf - 205490170
          Alon Gabay   - 2080646080
          Michael Elisha - 316904978
 '''
+import json
 
 import requests
 class Geo:
@@ -77,7 +78,18 @@ class Geo:
             api_response = api_result.json()
         except requests.exceptions.InvalidURL:
             return 'Invalid URL'
+        except json.decoder.JSONDecodeError:
+            return  'Invalid URL'
         return (api_response['dns']['geo'], api_response['dns']['ip'])
+
+    @staticmethod
+    def input_location(unit):
+        if unit == 'ip':
+            ip = input("enter ip address for more information:")
+            print(Geo.ip_details(ip))
+        else:
+            dns_name = input("enter dns url or dns name server for more information:")
+            print(Geo.dns_details(dns_name))
 
 #print(Geo.ip_details('8.8.8.8'))
 
